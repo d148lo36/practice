@@ -23,9 +23,4 @@
 
           - name: Install nano
             apt: name=nano state=latest
-            notify: Autoremove
 
-
-  handlers:
-          - name: Autoremove
-            apt: autoremove=yes
