@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: yes
+
+  tasks:
+          - name: remove nginx
+            apt: name=nginx state=absent
+
+          - name: remove nginx-common
+            apt: name=nginx-common state=absent
+
+          - name: autoremove
+            apt: autoremove=yes

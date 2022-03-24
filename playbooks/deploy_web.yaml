@@ -1,0 +1,25 @@
+---
+- name: Install nginx and copy files
+  hosts: all
+  become: yes
+
+  vars:
+          source_file: /home/alex/practice/files/index.html
+          destin_file: /var/www/html
+
+  tasks:
+
+  - name: Install nginx
+    apt: name=nginx update_cache=yes
+
+  - name: Copy website
+    copy: src={{ source_file }} dest={{ destin_file }} mode=0555
+    notify: Restart nginx server
+
+  - name: Start nginx server
+    service: name=nginx state=started enabled=yes
+
+
+  handlers:
+          - name: Restart nginx server
+            service: name=nginx state=restarted
