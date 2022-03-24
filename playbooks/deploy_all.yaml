@@ -1,0 +1,31 @@
+---
+
+- name: Install other soft for Ubuntu clients
+  hosts: all
+  become: yes
+
+
+  vars:
+
+  tasks:
+
+          - name: Apt update and upgrade
+            apt: update_cache=yes upgrade=yes
+
+          - name: Install tree
+            apt: name=tree state=latest
+
+          - name: Install net-tools
+            apt: name=net-tools state=latest
+
+          - name: Install mc
+            apt: name=mc state=latest
+
+          - name: Install nano
+            apt: name=nano state=latest
+            notify: Autoremove
+
+
+  handlers:
+          - name: Autoremove
+            apt: autoremove=yes
