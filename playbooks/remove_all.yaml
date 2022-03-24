@@ -1,0 +1,23 @@
+---
+
+- name: Remove other soft for Ubuntu clients
+  hosts: all
+  become: yes
+
+
+  vars:
+
+  tasks:
+
+          - name: Remove tree
+            apt: name=tree state=absent
+
+          - name: Remove net-tools
+            apt: name=net-tools state=absent
+
+          - name: Remove mc
+            apt: name=mc state=absent
+
+          - name: Remove nano
+            apt: name=nano state=absent
+
