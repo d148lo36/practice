@@ -21,3 +21,4 @@ for file_name in src_files:
         shutil.copy(full_file_name, dest)
 print("-------------------- Restart Nginx web server --------------------")
 os.system('service nginx restart')
+print("-------------------- All done!!! --------------------")
