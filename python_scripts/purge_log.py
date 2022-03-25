@@ -12,7 +12,7 @@ if(len(sys.argv) < 4):  # if CL arguments < 4
 
 file_name = sys.argv[1]
 limitsize = int(sys.argv[2])
-logsnumber = int(sys.agrv[3])
+logsnumber = int(sys.argv[3])
 
 if(os.path.isfile(file_name) == True):          # Check if logfile is exist
     logfile_size = os.stat(file_name).st_size   # Get filesize in bytes
@@ -30,4 +30,3 @@ if(os.path.isfile(file_name) == True):          # Check if logfile is exist
             print("Copied: " + file_name + "    to " + file_name + "_1")
         myfile = open(file_name, 'w')
         myfile.close()
-
