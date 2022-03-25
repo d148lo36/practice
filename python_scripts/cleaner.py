@@ -1,7 +1,6 @@
 #!/bin/python3
 
 import os, time
-from queue import Empty
 
 DAYS = 5        # Maximal age of file to stay, older will be deleted
 FOLDERS = [
