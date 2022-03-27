@@ -1,6 +1,5 @@
 import os
 import subprocess
-import colorama
 from colorama import Fore, Style
 
 print(Fore.RED + "-------------------- Stopping docker service --------------------" + Style.RESET_ALL)
@@ -8,10 +7,6 @@ print(Fore.RED + "-------------------- Stopping docker service -----------------
 os.system("systemctl stop docker.socket")
 
 os.system("systemctl stop docker.service")
-
-print(Fore.GREEN + "-------------------- Uninstall old version of docker --------------------" + Style.RESET_ALL)
-
-subprocess.run(["apt", "remove", "-y", 'docker', "docker-ce", "docker-ce-cli", "containerd.io", "docker-engine", "docker.io", "containerd", "runc"], check=True)
 
 print(Fore.GREEN + "-------------------- Prepare to install docker, get update from repo --------------------" + Style.RESET_ALL)
 

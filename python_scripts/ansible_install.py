@@ -1,6 +1,5 @@
 import os
 import subprocess
-import colorama
 from colorama import Fore, Style
 
 print(Fore.YELLOW + "-------------------- Get update from repo --------------------" + Style.RESET_ALL)
