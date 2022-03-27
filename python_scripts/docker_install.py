@@ -1,24 +1,38 @@
 import os
+import subprocess
+import colorama
+from colorama import Fore, Style
 
-print("--------------- Prepare to install docker, get update from repo ---------------")
+print(Fore.RED + "-------------------- Stopping docker service --------------------" + Style.RESET_ALL)
 
-os.system('apt update')
-os.system('apt -y install \
-    ca-certificates \
-        curl \
-            gnupg \
-                lsb-release')
+os.system("systemctl stop docker.socket")
 
-print("--------------- Add Docker official GPG key ---------------")
+os.system("systemctl stop docker.service")
 
-os.system('curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg')
+print(Fore.GREEN + "-------------------- Uninstall old version of docker --------------------" + Style.RESET_ALL)
 
-print("--------------- Add stable repo ---------------")
+subprocess.run(["apt", "remove", "-y", 'docker', "docker-ce", "docker-ce-cli", "containerd.io", "docker-engine", "docker.io", "containerd", "runc"], check=True)
+
+print(Fore.GREEN + "-------------------- Prepare to install docker, get update from repo --------------------" + Style.RESET_ALL)
+
+subprocess.run(["apt", "install", "-y", "ca-certificates", "curl", "gnupg", "lsb-release"], check=True)
+
+print(Fore.GREEN + "-------------------- Add Docker official GPG key --------------------" + Style.RESET_ALL)
+
+os.system('curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor --batch --yes -o /usr/share/keyrings/docker-archive-keyring.gpg')
+
+print(Fore.GREEN + "-------------------- Add stable repo --------------------" + Style.RESET_ALL)
+
 os.system('echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null')
 
-print("--------------- Get update from repo ---------------")
-os.system('apt update')
-print("--------------- Installing Docker ---------------")
-os.system('apt -y install docker-ce docker-ce-cli containerd.io')
+print(Fore.GREEN + "-------------------- Get update from repo --------------------" + Style.RESET_ALL)
+
+subprocess.run(["apt", "update", "-y"], check=True)
+
+print(Fore.GREEN + "-------------------- Installing Docker --------------------" + Style.RESET_ALL)
+
+subprocess.run(["apt", "install", "-y", "docker-ce", "docker-ce-cli", "containerd.io"], check=True)
+
+print(Fore.GREEN + "-------------------- Done! --------------------" + Style.RESET_ALL)
