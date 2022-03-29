@@ -1,4 +1,5 @@
 import os
+from re import sub
 import subprocess
 from colorama import Fore, Style
 
@@ -29,5 +30,19 @@ subprocess.run(["apt", "update", "-y"], check=True)
 print(Fore.GREEN + "-------------------- Installing Docker --------------------" + Style.RESET_ALL)
 
 subprocess.run(["apt", "install", "-y", "docker-ce", "docker-ce-cli", "containerd.io"], check=True)
+
+print(Fore.GREEN + "-------------------- Add docker group --------------------" + Style.RESET_ALL)
+
+subprocess.run(["groupadd", "docker"])
+os.system("usermod -aG docker $USER")
+
+print(Fore.YELLOW + "-------------------- Starting docker service --------------------" + Style.RESET_ALL)
+
+os.system("systemctl start docker")
+os.system("systemctl enable docker")
+
+print(Fore.GREEN + "-------------------- Test docker --------------------" + Style.RESET_ALL)
+
+subprocess.run(["docker", "run", "hello-world"])
 
 print(Fore.GREEN + "-------------------- Done! --------------------" + Style.RESET_ALL)
