@@ -11,7 +11,8 @@ os.system("systemctl stop docker.service")
 
 print(Fore.GREEN + "-------------------- Prepare to install docker, get update from repo --------------------" + Style.RESET_ALL)
 
-subprocess.run(["apt", "install", "-y", "ca-certificates", "curl", "gnupg", "lsb-release"], check=True)
+subprocess.run(["apt", "install", "-y", "ca-certificates",
+               "curl", "gnupg", "lsb-release"], check=True)
 
 print(Fore.GREEN + "-------------------- Add Docker official GPG key --------------------" + Style.RESET_ALL)
 
@@ -29,7 +30,8 @@ subprocess.run(["apt", "update", "-y"], check=True)
 
 print(Fore.GREEN + "-------------------- Installing Docker --------------------" + Style.RESET_ALL)
 
-subprocess.run(["apt", "install", "-y", "docker-ce", "docker-ce-cli", "containerd.io"], check=True)
+subprocess.run(["apt", "install", "-y", "docker-ce",
+               "docker-ce-cli", "containerd.io"], check=True)
 
 print(Fore.GREEN + "-------------------- Add docker group --------------------" + Style.RESET_ALL)
 
