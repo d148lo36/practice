@@ -23,7 +23,7 @@ echo -e "${GREEN}-------------------- Checking your Web server -----------------
 
 systemctl status nginx
 
-echo -e "${YELLOW}-------------------- Copy files from " + $src + " to " + $dest + " --------------------${ENDCOLOR}"
+echo -e "${YELLOW}-------------------- Copy files from $src to $dest --------------------${ENDCOLOR}"
 # src_files = os.listdir(src)
 # for file_name in src_files:
 #     full_file_name = os.path.join(src, file_name)
