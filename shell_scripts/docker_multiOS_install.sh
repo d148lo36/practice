@@ -154,9 +154,6 @@ function installDocker() {
     systemctl start docker
     docker run hello-world
     echo -e "${GREEN}-------------------- Done! --------------------${NC}"
-  elif [[ ${OS} == 'arch' ]]; then # Arch
-    echo -e "${RED}-------------------- This script is not supported Arch Linux!!! --------------------${NC}"
-    exit 1
   fi
 }
 
