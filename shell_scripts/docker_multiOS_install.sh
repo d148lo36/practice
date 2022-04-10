@@ -40,14 +40,9 @@ function checkOS() {
 	elif [[ -e /etc/centos-release ]]; then
 		source /etc/os-release
 		OS=centos
-	elif [[ -e /etc/oracle-release ]]; then
-		source /etc/os-release
-		OS=oracle
   elif [[ -e /etc/redhat-release ]]; then
     source /etc/redhat-release
     OS=redhat
-	elif [[ -e /etc/arch-release ]]; then
-		OS=arch
 	else
 		echo "Looks like you aren't running this installer on a Debian, Ubuntu, Fedora, RedHat and CentOS system"
 		exit 1
