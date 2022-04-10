@@ -75,6 +75,7 @@ function installDocker() {
     apt install -y docker-ce docker-ce-cli containerd.io
     groupadd docker
     usermod -aG docker $USER
+		chmod 666 /var/run/docker.sock
     echo -e "${GREEN}-------------------- Starting docker service --------------------${NC}"
     systemctl start docker
     systemctl enable docker
@@ -98,6 +99,7 @@ function installDocker() {
     yum install docker-ce docker-ce-cli containerd.io
     groupadd docker
     usermod -aG docker $USER
+		chmod 666 /var/run/docker.sock
     echo -e "${GREEN}-------------------- Starting docker service --------------------${NC}"
     systemctl start docker
     docker run hello-world
@@ -126,6 +128,7 @@ function installDocker() {
     dnf install docker-ce docker-ce-cli containerd.io
     groupadd docker
     usermod -aG docker $USER
+		chmod 666 /var/run/docker.sock
     echo -e "${GREEN}-------------------- Starting docker service --------------------${NC}"
     systemctl start docker
     docker run hello-world
@@ -150,6 +153,7 @@ function installDocker() {
     yum install docker-ce docker-ce-cli containerd.io
     groupadd docker
     usermod -aG docker $USER
+		chmod 666 /var/run/docker.sock
     echo -e "${GREEN}-------------------- Starting docker service --------------------${NC}"
     systemctl start docker
     docker run hello-world
