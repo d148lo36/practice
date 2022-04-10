@@ -109,7 +109,7 @@ function installDocker() {
     echo -e "${GREEN}-------------------- Done! --------------------${NC}"
   elif [[ ${OS} == 'fedora' ]]; then # Fedora
     if [[ ${VERSION_ID} -lt 34 ]]; then
-      echo -e "${RED}-------------------- This version of Fedora is not supported!!! --------------------${NC}"
+      echo -e "${RED}-------------------- This version of Fedora (${VERSION_ID}) is not supported!!! --------------------${NC}"
       exit 1
     fi
     echo -e "${RED}-------------------- Remove older docker version  --------------------${NC}"
